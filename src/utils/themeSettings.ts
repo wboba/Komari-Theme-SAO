@@ -262,6 +262,7 @@ export interface ResolvedThemeSettings {
   mobileNodeViewMode: NodeViewMode;
   serverCardTemplate: ServerCardTemplate;
   clusterOverviewMode: ClusterOverviewMode;
+  showClusterOverview: boolean;
   matrixColorTheme: MatrixColorTheme;
   matrixMockFill: boolean;
   matrixBootAnimation: boolean;
@@ -327,6 +328,7 @@ export const DEFAULT_THEME_SETTINGS: ResolvedThemeSettings = {
   mobileNodeViewMode: "compact",
   serverCardTemplate: "layered",
   clusterOverviewMode: "classic",
+  showClusterOverview: false,
   matrixColorTheme: "eva",
   matrixMockFill: false,
   matrixBootAnimation: true,
@@ -652,6 +654,8 @@ export function normalizeThemeSettings(
       DEFAULT_THEME_SETTINGS.serverCardTemplate,
     ),
     clusterOverviewMode: normalizeClusterOverviewMode(settings?.clusterOverviewMode),
+    // 默认隐藏(需站长显式开启):未配置时不展示首页右侧集群状态卡片。
+    showClusterOverview: settings?.showClusterOverview === true,
     matrixColorTheme: normalizeMatrixColorTheme(settings?.matrixColorTheme),
     matrixMockFill: normalizeMatrixMockFill(settings?.matrixMockFill),
     matrixBootAnimation: normalizeMatrixBootAnimation(settings?.matrixBootAnimation),
