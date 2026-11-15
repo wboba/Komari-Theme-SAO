@@ -221,6 +221,8 @@ export interface ThemeSettings {
   showCardGroup?: boolean;
   /** 首页右侧集群状态卡片的展示模式：经典上下双层（classic）、机架方格矩阵（nodes）。 */
   clusterOverviewMode?: "classic" | "nodes";
+  /** 是否显示首页右侧集群状态卡片（默认隐藏，需在主题设置中显式开启）。 */
+  showClusterOverview?: boolean;
   /** 机架方格矩阵配色风格。 */
   matrixColorTheme?: MatrixColorTheme;
   /** 模拟数据填充空闲机位插槽。 */
