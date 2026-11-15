@@ -125,6 +125,11 @@
     grid-template-columns: minmax(0, 1.48fr) minmax(0, 1fr);
     gap: 22px;
   }
+
+  /* 集群状态卡片隐藏时，左侧主区域占满整行 */
+  .mao-dashboard-hero.is-cluster-hidden {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .mao-hero-main {
