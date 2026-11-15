@@ -101,6 +101,12 @@ describe("normalizeThemeSettings", () => {
     expect(normalizeThemeSettings({ clusterOverviewMode: "invalid" as never }).clusterOverviewMode).toBe("classic");
   });
 
+  it("defaults showClusterOverview to hidden unless explicitly enabled", () => {
+    expect(normalizeThemeSettings({}).showClusterOverview).toBe(false);
+    expect(normalizeThemeSettings({ showClusterOverview: false }).showClusterOverview).toBe(false);
+    expect(normalizeThemeSettings({ showClusterOverview: true }).showClusterOverview).toBe(true);
+  });
+
   it("normalizes serverCardTemplate correctly across classic and layered options", () => {
     expect(normalizeThemeSettings({ serverCardTemplate: "classic" }).serverCardTemplate).toBe("classic");
     expect(normalizeThemeSettings({ serverCardTemplate: "layered" }).serverCardTemplate).toBe("layered");
