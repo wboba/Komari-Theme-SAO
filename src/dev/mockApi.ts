@@ -681,6 +681,7 @@ export function installDevMockApi() {
     desktopNodeViewMode: "compact",
     mobileNodeViewMode: "compact",
     clusterOverviewMode: "classic",
+    showClusterOverview: false,
     serverCardTemplate: "layered",
     showHomeOverview: true,
     overviewCardVisualMode: "visual",
