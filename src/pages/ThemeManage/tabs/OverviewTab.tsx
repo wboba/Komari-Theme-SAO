@@ -162,6 +162,16 @@ export function OverviewTab({
                 </div>
               </div>
 
+              <div className="mb-4">
+                <ToggleRow
+                  field="showClusterOverview"
+                  title="显示集群状态卡片"
+                  desc="关闭后首页右侧的集群状态卡片整卡隐藏（默认关闭）。需要时在此开启，再选择下方展现形式。"
+                  checked={draft.showClusterOverview}
+                  onPatch={patch}
+                />
+              </div>
+
               <div className="setting-mode-cards">
                 {[
                   {
