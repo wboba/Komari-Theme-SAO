@@ -242,6 +242,7 @@ const HomeOverviewCards = memo(function HomeOverviewCards({
   visibleNodes,
   nameByUuid,
   clusterOverviewMode = "classic",
+  showClusterOverview = false,
   matrixColorTheme = "default",
   matrixMockFill = false,
   matrixBootAnimation = true,
@@ -276,6 +277,7 @@ const HomeOverviewCards = memo(function HomeOverviewCards({
   visibleNodes: HomeNodeSummary[];
   nameByUuid: Map<string, string>;
   clusterOverviewMode?: ClusterOverviewMode;
+  showClusterOverview?: boolean;
   matrixColorTheme?: MatrixColorTheme;
   matrixMockFill?: boolean;
   matrixBootAnimation?: boolean;
@@ -355,7 +357,7 @@ const HomeOverviewCards = memo(function HomeOverviewCards({
 
   return (
     <section
-      className={`mao-dashboard-hero home-overview${dense ? " is-dense" : ""}`}
+      className={`mao-dashboard-hero home-overview${dense ? " is-dense" : ""}${showClusterOverview ? "" : " is-cluster-hidden"}`}
       aria-label="首页总览"
       data-palette={matrixColorTheme || "default"}
     >
@@ -385,7 +387,8 @@ const HomeOverviewCards = memo(function HomeOverviewCards({
         </div>
       </div>
 
-      {/* 右侧集群状态区域 */}
+      {/* 右侧集群状态区域（主题设置关闭时整卡隐藏） */}
+      {showClusterOverview && (
       <div className="mao-hero-side">
         <div
           className="mao-progress-container"
@@ -518,6 +521,7 @@ const HomeOverviewCards = memo(function HomeOverviewCards({
           )}
         </div>
       </div>
+      )}
     </section>
   );
 });
@@ -1460,6 +1464,7 @@ export function NodeGrid() {
           visibleNodes={visibleNodes}
           nameByUuid={nameByUuid}
           clusterOverviewMode={themeSettings.clusterOverviewMode}
+          showClusterOverview={themeSettings.showClusterOverview}
           matrixColorTheme={themeSettings.matrixColorTheme}
           matrixMockFill={themeSettings.matrixMockFill}
           matrixBootAnimation={themeSettings.matrixBootAnimation}
